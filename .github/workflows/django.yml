@@ -11,6 +11,7 @@ on:
 
 jobs:
   ci:
+    name: Integração contínua
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgres://devpro:devpro@postgres:5432/devpro
@@ -48,7 +49,7 @@ jobs:
         python manage.py test
 
   deploy:
-    name: Deploy app
+    name: Deploy
     runs-on: ubuntu-latest
     needs: ci
     env:
