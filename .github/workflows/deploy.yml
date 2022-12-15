@@ -1,11 +1,7 @@
-name: Django CI
+name: Deploy
 
 on:
   push:
-    branches:
-      - main
-
-  pull_request:
     branches:
       - main
 
