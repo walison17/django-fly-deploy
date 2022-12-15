@@ -1,22 +1,19 @@
-ARG PYTHON_VERSION=3.10-slim-buster
+ARG PYTHON_VERSION=3.11-slim-buster
 
 FROM python:${PYTHON_VERSION}
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir -p /code
+WORKDIR /app
 
-WORKDIR /code
-
-COPY requirements.txt /tmp/requirements.txt
+COPY requirements.txt ./requirements.txt
 
 RUN set -ex && \
-    pip install --upgrade pip && \
-    pip install -r /tmp/requirements.txt && \
-    rm -rf /root/.cache/
+    pip install -U pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-COPY . /code/
+COPY . /app/
 
 EXPOSE 8000
 
